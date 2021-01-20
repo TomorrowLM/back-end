@@ -1,12 +1,11 @@
-const mysql = require('mysql');  
-
+const mysql = require('mysql')
 //创建连接  
 var client = mysql.createConnection({  
-  host     : 'localhost',
+  host: 'localhost',
   user: 'root',  
   password: '123456',  
   database: 'ebook' 
 });  
 client.connect();
  
-export default client;
+module.exports = client;
