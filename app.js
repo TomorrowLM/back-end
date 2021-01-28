@@ -4,8 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var loginRouter = require('./routes/login');
+var registerRouter = require('./routes/register');
 
 var app = express();
 
@@ -46,9 +46,19 @@ app.all("*", function(req, res, next) {
   res.header("Content-Type", "application/json;charset=utf-8");
   next(); // 执行下一个路由
 });
+app.all('*', function (req, res, next) {
+  //响应头指定了该响应的资源是否被允许与给定的origin共享。*表示所有域都可以访问，同时可以将*改为指定的url，表示只有指定的url可以访问到资源 
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers",  " Origin, X-Requested-With, Content-Type, Accept");
+    //允许请求资源的方式
+    res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+    res.header("X-Powered-By", ' 3.2.1');
+    res.header("Content-Type", "application/json;charset=utf-8");
+    next();
+  });
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/login', loginRouter);
+app.use('/register', registerRouter);
 //params
 app.get('/:he/:she?',function(req,res) {
 	if(req.params) {
