@@ -4,10 +4,11 @@ const express = require('express');
 //最后，挂载到某个路径。
 var router = express.Router();
 const login = require("../common/login")
-const sql = "select * from login where username='liming'"
-/* GET home page. */
-router.get('/', function(req, res, next) {
-    login.selectBy(sql,res);
+
+router.post('/', function(req, res, next) {
+    let username1 = req.body.params['username']
+    let password1 = req.body.params['password']
+    login(username1,password1,res);
     // connection.end();
 });
 

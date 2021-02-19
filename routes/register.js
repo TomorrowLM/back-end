@@ -13,9 +13,4 @@ router.post('/', function(req, res, next) {
     // connection.end();
 });
 
-//可以为将同一个路由器实例挂载到多个路径。
-// router.get('/about', function(req, res) {
-//   res.send('关于');
-// });
-
 module.exports = router;
