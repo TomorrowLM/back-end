@@ -6,7 +6,8 @@ var logger = require('morgan');
 
 var loginRouter = require('./routes/login');
 var registerRouter = require('./routes/register');
-
+var fixzhanghaoRouter =  require('./routes/fixzhanghao');
+var fixmimaRouter =  require('./routes/fixmima');
 var app = express();
 
 // view engine setup
@@ -59,6 +60,9 @@ app.all('*', function (req, res, next) {
 
 app.use('/login', loginRouter);
 app.use('/register', registerRouter);
+app.use('/fixzhanghao', fixzhanghaoRouter);
+app.use('/fixmima', fixmimaRouter);
+
 //params
 app.get('/:he/:she?',function(req,res) {
 	if(req.params) {
