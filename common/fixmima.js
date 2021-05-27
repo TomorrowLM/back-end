@@ -7,7 +7,7 @@ function fixmima(mima, res) {
     let oldmima = "select * from login where username='"+zhanghao+"'and password='" + mima.oldmima + "'"
     let newmima = "update login set password='" + mima.newmima + "' where username='" + zhanghao + "'"
     client.query(oldmima, function (error, results) {
-        console.log(results)
+        console.log(results.length)
         if(!results.length){res.send('fail')}
         else{
             client.query(newmima, function (error, results) {
